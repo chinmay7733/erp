@@ -64,7 +64,7 @@ const CylinderBar = ({ x, y, width, height, payload }) => {
 
 const FeesChart = () => {
   return (
-    <div className="bg-white border-2 rounded-lg p-4">
+    <div className="bg-white  border rounded-lg p-4">
       <div className="flex justify-between items-center mb-4">
         <h3 className="font-semibold">
           Fees Collection & Expenses
@@ -83,7 +83,7 @@ const FeesChart = () => {
           <LegendItem color="bg-yellow-400" label="Expenses" value="5,000" />
         </div>
         <div className="flex-1">
-          <ResponsiveContainer width="100%" height={370}>
+          <ResponsiveContainer width="100%" height={385}>
             <BarChart data={data}>
               <defs>
                 <linearGradient id="blueGrad" x1="0" y1="0" x2="0" y2="1">

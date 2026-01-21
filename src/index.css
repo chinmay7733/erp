@@ -1,0 +1,15 @@
+/* Sidebar scrollbar */
+.scrollbar-akkhor::-webkit-scrollbar {
+  width: 6px;
+}
+.scrollbar-akkhor::-webkit-scrollbar-thumb {
+  background-color: #334155;
+  border-radius: 10px;
+}
+.scrollbar-akkhor::-webkit-scrollbar-track {
+  background: transparent;
+}
+.scrollbar-akkhor {
+  scrollbar-width: thin;
+  scrollbar-color: #334155 transparent;
+}

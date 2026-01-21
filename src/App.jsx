@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import './App.css'
 import Sidebar from './components/sidebar.jsx'
 import Dashboard from './components/Dashboard.jsx'
+import Students from './components/Students.jsx'
 function App() {
   const [count, setCount] = useState(0)
 const Page = ({ title }) => (
@@ -17,7 +18,7 @@ const Page = ({ title }) => (
         <Routes>
       
           <Route path="/" element={<Dashboard />} />
-          <Route path="/students" element={<Page title="Students" />} />
+          <Route path="/students" element={<Students />} />
           <Route path="/teachers" element={<Page title="Teachers" />} />
           <Route path="/parents" element={<Page title="Parents" />} />
           <Route path="/library" element={<Page title="Library" />} />
