@@ -16,10 +16,10 @@ import { MdOutlineSchool } from "react-icons/md";
 const Students = () => {
   const [students, setStudents] = useState([
     {
-      roll: 2901,
+      ID: 2901,
       name: "Richi Rozario",
       gender: "Female",
-      parent: "David Smith",
+      Subject: "Mathematics",
       class: 1,
       section: "A",
       address: "TA-110, North Sydney",
@@ -29,10 +29,10 @@ const Students = () => {
       avatar: "https://i.pravatar.cc/40?img=11",
     },
     {
-      roll: 2902,
+      ID: 2902,
       name: "Kazi Fahim",
       gender: "Male",
-      parent: "Mike Hussy",
+      Subject: "Physics",
       class: 2,
       section: "B",
       address: "59 Street, North Sydney",
@@ -42,10 +42,10 @@ const Students = () => {
       avatar: "https://i.pravatar.cc/40?img=12",
     },
     {
-      roll: 2903,
+      ID: 2903,
       name: "Richi Rozario",
       gender: "Female",
-      parent: "David Smith",
+      Subject: "Chemistry",
       class: 1,
       section: "A",
       address: "TA-110, North Sydney",
@@ -55,10 +55,10 @@ const Students = () => {
       avatar: "https://i.pravatar.cc/40?img=13",
     },
     {
-      roll: 2904,
+      ID: 2904,
       name: "Richi Rozario",
       gender: "Female",
-      parent: "David Smith",
+      Subject: "Biology",
       class: 1,
       section: "A",
       address: "TA-110, North Sydney",
@@ -68,10 +68,10 @@ const Students = () => {
       avatar: "https://i.pravatar.cc/40?img=13",
     },
     {
-      roll: 2905,
+      ID: 2905,
       name: "Richi Rozario",
       gender: "Female",
-      parent: "David Smith",
+      Subject: "Mathematics",
       class: 1,
       section: "A",
       address: "TA-110, North Sydney",
@@ -81,10 +81,10 @@ const Students = () => {
       avatar: "https://i.pravatar.cc/40?img=13",
     },
     {
-      roll: 2906,
+      ID: 2906,
       name: "Richi Rozario",
       gender: "Female",
-      parent: "David Smith",
+      Subject: "Mathematics",
       class: 1,
       section: "A",
       address: "TA-110, North Sydney",
@@ -94,10 +94,10 @@ const Students = () => {
       avatar: "https://i.pravatar.cc/40?img=13",
     },
     {
-      roll: 2907,
+      ID: 2907,
       name: "Richi Rozario",
       gender: "Female",
-      parent: "David Smith",
+      Subject: "Mathematics",
       class: 1,
       section: "A",
       address: "TA-110, North Sydney",
@@ -107,10 +107,10 @@ const Students = () => {
       avatar: "https://i.pravatar.cc/40?img=13",
     },
     {
-      roll: 2908,
+      ID: 2908,
       name: "Richi Rozario",
       gender: "Female",
-      parent: "David Smith",
+      Subject: "Mathematics",
       class: 1,
       section: "A",
       address: "TA-110, North Sydney",
@@ -120,10 +120,10 @@ const Students = () => {
       avatar: "https://i.pravatar.cc/40?img=13",
     },
     {
-      roll: 2909,
+      ID: 2909,
       name: "Richi Rozario",
       gender: "Female",
-      parent: "David Smith",
+      Subject: "Mathematics",
       class: 1,
       section: "A",
       address: "TA-110, North Sydney",
@@ -133,10 +133,10 @@ const Students = () => {
       avatar: "https://i.pravatar.cc/40?img=13",
     },
     {
-      roll: 2910,
+      ID: 2910,
       name: "Richi Rozario",
       gender: "Female",
-      parent: "David Smith",
+      Subject: "Mathematics",
       class: 1,
       section: "A",
       address: "TA-110, North Sydney",
@@ -146,10 +146,10 @@ const Students = () => {
       avatar: "https://i.pravatar.cc/40?img=13",
     },
     {
-      roll: 2911,
+      ID: 2911,
       name: "Richi Rozario",
       gender: "Female",
-      parent: "David Smith",
+      Subject: "Mathematics",
       class: 1,
       section: "A",
       address: "TA-110, North Sydney",
@@ -159,10 +159,10 @@ const Students = () => {
       avatar: "https://i.pravatar.cc/40?img=13",
     },
     {
-      roll: 2912,
+      ID: 2912,
       name: "Richi Rozario",
       gender: "Female",
-      parent: "David Smith",
+      Subject: "Mathematics",
       class: 1,
       section: "A",
       address: "TA-110, North Sydney",
@@ -172,10 +172,10 @@ const Students = () => {
       avatar: "https://i.pravatar.cc/40?img=13",
     },
     {
-      roll: 2913,
+      ID: 2913,
       name: "Richi Rozario",
       gender: "Female",
-      parent: "David Smith",
+      Subject: "Mathematics",
       class: 1,
       section: "A",
       address: "TA-110, North Sydney",
@@ -185,10 +185,10 @@ const Students = () => {
       avatar: "https://i.pravatar.cc/40?img=13",
     },
     {
-      roll: 2914,
+      ID: 2914,
       name: "Richi Rozario",
       gender: "Female",
-      parent: "David Smith",
+      Subject: "Mathematics",
       class: 1,
       section: "A",
       address: "TA-110, North Sydney",
@@ -198,10 +198,10 @@ const Students = () => {
       avatar: "https://i.pravatar.cc/40?img=13",
     },
     {
-      roll: 2915,
+      ID: 2915,
       name: "Richi Rozario",
       gender: "Female",
-      parent: "David Smith",
+      Subject: "Mathematics",
       class: 1,
       section: "A",
       address: "TA-110, North Sydney",
@@ -211,10 +211,10 @@ const Students = () => {
       avatar: "https://i.pravatar.cc/40?img=13",
     },
     {
-      roll: 2916,
+      ID: 2916,
       name: "Richi Rozario",
       gender: "Female",
-      parent: "David Smith",
+      Subject: "Mathematics",
       class: 1,
       section: "A",
       address: "TA-110, North Sydney",
@@ -326,23 +326,27 @@ const Students = () => {
         </div>
       </div>
       <div className="mt-5">
-        <h3 className="text-2xl font-semibold text-gray-700">All Students</h3>
+        <h3 className="text-2xl font-semibold text-gray-700">All Teachers</h3>
       </div>
 
       <div className="bg-white p-4 rounded shadow mb-4 flex justify-between">
         <div className="flex items-center gap-2">
           <MdOutlineSchool className="text-yellow-500 text-xl" />
-          <span className="font-semibold">All Students</span>
+          <span className="font-semibold">All Teachers</span>
         </div>
 
         <div className="flex gap-2 items-center">
           <input
-            placeholder="Roll Type Here..."
+            placeholder="#ID Type Here..."
+            className="bg-gray-100 rounded-full px-2 py-1.5 text-sm w-44"
+          />
+          <input
+            placeholder="Type Class..."
             className="bg-gray-100 rounded-full px-2 py-1.5 text-sm w-44"
           />
 
           <input
-            placeholder="Type Section..."
+            placeholder="Subject..."
             className="bg-gray-100 rounded-full px-2 py-1.5 text-sm w-44"
           />
 
@@ -378,11 +382,11 @@ const Students = () => {
                   onChange={handleSelectAll}
                 />
               </th>
-              <th className="p-1 text-left">Roll</th>
+              <th className="p-1 text-left">ID</th>
               <th className="p-1">Photo</th>
               <th className="p-1 text-left">Name</th>
               <th className="p-1 text-left">Gender</th>
-              <th className="p-1 text-left">Parent</th>
+              <th className="p-1 text-left">Subject</th>
               <th className="p-1">Class</th>
               <th className="p-1">Section</th>
               <th className="p-1 text-left">Address</th>
@@ -403,7 +407,7 @@ const Students = () => {
                     onChange={() => handleSelectOne(s.roll)}
                   />
                 </td>
-                <td className="p-1">{s.roll}</td>
+                <td className="p-1">{s.ID}</td>
                 <td className="p-1">
                   <img
                     src={s.avatar}
@@ -412,7 +416,7 @@ const Students = () => {
                 </td>
                 <td className="p-1">{s.name}</td>
                 <td className="p-1 text-left">{s.gender}</td>
-                <td className="p-1 text-left">{s.parent}</td>
+                <td className="p-1 text-left">{s.Subject}</td>
                 <td className="p-1 text-center">{s.class}</td>
                 <td className="p-1 text-center">{s.section}</td>
                 <td className="p-1">{s.address}</td>

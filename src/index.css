@@ -13,3 +13,59 @@
   scrollbar-width: thin;
   scrollbar-color: #334155 transparent;
 }
+/* Label */
+.label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #4b5563; /* gray-600 */
+  margin-bottom: 4px;
+}
+
+/* Text, Select, Date Inputs */
+.input {
+  width: 100%;
+  height: 2.25rem;              /* better ERP height */
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.375rem;      /* ✅ NOT pill */
+  background-color: #f9fafb;    /* gray-50 */
+  border: 1px solid #e5e7eb;    /* gray-200 */
+  font-size: 0.875rem;
+  color: #1f2937;               /* gray-800 */
+}
+
+.input:focus {
+  outline: none;
+  border-color: #3b82f6;        /* blue-500 */
+  box-shadow: 0 0 0 1px #3b82f6;
+}
+
+/* File input → keep native ERP look */
+.file-input {
+  font-size: 0.875rem;
+  color: #374151; /* gray-700 */
+}
+.file-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.file-btn {
+  background-color: #e5e7eb; /* gray-200 */
+  border: 1px solid #d1d5db;
+  padding: 0.4rem 0.9rem;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  cursor: pointer;
+  color: #1f2937;
+}
+
+.file-btn:hover {
+  background-color: #d1d5db;
+}
+
+.file-name {
+  font-size: 0.875rem;
+  color: #6b7280; /* gray-500 */
+}

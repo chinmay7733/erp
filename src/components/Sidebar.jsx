@@ -106,7 +106,7 @@ const Sidebar = () => {
               {[
                 ["All Students", "/students"],
                 ["Student Details", "/students/details"],
-                ["Admit Form", "/students/admit"],
+                ["Admit Form", "/AddStudent"],
                 ["Student Promotion", "/students/promotion"],
               ].map(([label, path]) => (
                 <NavLink
