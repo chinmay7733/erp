@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { FiSearch, FiGlobe, FiMail, FiBell } from "react-icons/fi";
 import { MdOutlineSchool } from "react-icons/md";
+
+
 const AddStudent = () => {
   const [formData, setFormData] = useState({
     firstName: "",
@@ -36,6 +38,7 @@ const AddStudent = () => {
   const handleReset = () => {
     setFormData({});
   };
+  
 
   return (
     <div className="flex flex-col gap-4">
@@ -92,21 +95,17 @@ const AddStudent = () => {
       </div>
       <div className=" bg-gray-50 min-h-screen">
         <div className="bg-white rounded shadow">
-          {/* HEADER */}
           <div className="border-b px-6 py-3 font-semibold text-gray-700">
             Add Student Form
           </div>
 
           <form onSubmit={handleSubmit} className="p-6 space-y-8">
-            {/* STUDENT INFO */}
-            {/* STUDENT INFORMATION */}
             <div>
               <h3 className="text-sm font-semibold text-blue-600 border-b pb-2 mb-6">
                 Student Information
               </h3>
 
               <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-                {/* First Name */}
                 <div>
                   <label className="label">First Name</label>
                   <input
@@ -115,7 +114,6 @@ const AddStudent = () => {
                   />
                 </div>
 
-                {/* Last Name */}
                 <div>
                   <label className="label">Last Name</label>
                   <input
@@ -124,7 +122,6 @@ const AddStudent = () => {
                   />
                 </div>
 
-                {/* Class */}
                 <div className="w-full">
                   <label className="label">Class</label>
                   <select className="input w-50 h-7 px-2 rounded-2xl bg-gray-100">
@@ -134,17 +131,15 @@ const AddStudent = () => {
                   </select>
                 </div>
 
-                {/* Section */}
                 <div>
                   <label className="label">Section</label>
-                  <select className="inputw-50 h-7 px-2 rounded-2xl bg-gray-100">
+                  <select className="input w-50 h-7 px-2 rounded-2xl bg-gray-100">
                     <option>Please Select Section</option>
                     <option>A</option>
                     <option>B</option>
                   </select>
                 </div>
 
-                {/* Gender */}
                 <div>
                   <label className="label">Gender</label>
                   <select className="input w-50 h-7 px-2 rounded-2xl bg-gray-100">
@@ -154,7 +149,6 @@ const AddStudent = () => {
                   </select>
                 </div>
 
-                {/* Date of Birth */}
                 <div>
                   <label className="label">Date Of Birth</label>
                   <input
@@ -163,7 +157,6 @@ const AddStudent = () => {
                   />
                 </div>
 
-                {/* Roll */}
                 <div>
                   <label className="label">Roll</label>
                   <input
@@ -171,8 +164,6 @@ const AddStudent = () => {
                     className="input w-50 h-7 px-2 rounded-2xl bg-gray-100"
                   />
                 </div>
-
-                {/* Admission No */}
                 <div>
                   <label className="label">Admission No</label>
                   <input
@@ -181,7 +172,6 @@ const AddStudent = () => {
                   />
                 </div>
 
-                {/* Religion */}
                 <div>
                   <label className="label">Religion</label>
                   <input
@@ -190,7 +180,6 @@ const AddStudent = () => {
                   />
                 </div>
 
-                {/* Email */}
                 <div>
                   <label className="label">E-mail</label>
                   <input
@@ -232,55 +221,42 @@ const AddStudent = () => {
               </h3>
 
               <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-                {/* Father Name */}
                 <div>
                   <label className="label">Father Name</label>
                   <input type="text" className="input" />
                 </div>
-
-                {/* Mother Name */}
                 <div>
                   <label className="label">Mother Name</label>
                   <input type="text" className="input" />
                 </div>
-
-                {/* Father Occupation */}
                 <div>
                   <label className="label">Father Occupation</label>
                   <input type="text" className="input" />
                 </div>
 
-                {/* Mother Occupation */}
                 <div>
                   <label className="label">Mother Occupation</label>
                   <input type="text" className="input" />
                 </div>
 
-                {/* Phone */}
                 <div>
                   <label className="label">Phone Number</label>
                   <input type="text" className="input" />
                 </div>
-
-                {/* Nationality */}
                 <div>
                   <label className="label">Nationality</label>
                   <input type="text" className="input" />
                 </div>
 
-                {/* Present Address */}
                 <div>
                   <label className="label">Present Address</label>
                   <input type="text" className="input" />
                 </div>
 
-                {/* Permanent Address */}
                 <div>
                   <label className="label">Permanent Address</label>
                   <input type="text" className="input" />
                 </div>
-
-                {/* Upload Parents Photo */}
                 <div>
                   <label className="label">
                     Upload Parents Photo{" "}
@@ -308,7 +284,6 @@ const AddStudent = () => {
               </div>
             </div>
 
-            {/* BUTTONS */}
             <div className="flex gap-4 pt-4">
               <button
                 type="submit"

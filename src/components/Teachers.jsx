@@ -12,8 +12,11 @@ import {
   FiX,
 } from "react-icons/fi";
 import { MdOutlineSchool } from "react-icons/md";
+import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Students = () => {
+  
   const [students, setStudents] = useState([
     {
       ID: 2901,
@@ -226,8 +229,7 @@ const Students = () => {
   ]);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [deleteTarget, setDeleteTarget] = useState(null);
-  // null = bulk delete, number = single roll
-
+  const navigate =useNavigate();
   const [search, setSearch] = useState("");
   const [selected, setSelected] = useState([]);
 
@@ -237,7 +239,7 @@ const Students = () => {
 
   const handleSelectAll = (e) => {
     if (e.target.checked) {
-      setSelected(filtered.map((s) => s.roll));
+      setSelected(filtered.map((s) => s.ID));
     } else {
       setSelected([]);
     }
@@ -261,7 +263,7 @@ const Students = () => {
   const confirmDelete = () => {
     if (deleteTarget === null) {
       // bulk delete
-      setStudents((prev) => prev.filter((s) => !selected.includes(s.roll)));
+      setStudents((prev) => prev.filter((s) => !selected.includes(s.ID)));
       setSelected([]);
     } else {
       // single delete
@@ -271,7 +273,16 @@ const Students = () => {
     setShowDeleteModal(false);
     setDeleteTarget(null);
   };
+const TeacherDetail = () => {
+  const { id } = useParams();
+  const { state } = useLocation();
 
+  if (!state) {
+    return <div>No teacher data found for ID {id}</div>;
+  }
+
+  return <div>{state.name}</div>;
+};
   return (
     <div className="p-1 bg-gray-50 min-h-screen">
       <div className="bg-white rounded-md shadow-sm  p-1 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-0">
@@ -403,8 +414,8 @@ const Students = () => {
                 <td className="p-2 text-center">
                   <input
                     type="checkbox"
-                    checked={selected.includes(s.roll)}
-                    onChange={() => handleSelectOne(s.roll)}
+                    checked={selected.includes(s.ID)}
+                    onChange={() => handleSelectOne(s.ID)}
                   />
                 </td>
                 <td className="p-1">{s.ID}</td>
@@ -425,7 +436,15 @@ const Students = () => {
                 <td className="p-1">{s.email}</td>
                 <td className="p-1">
                   <div className="flex justify-center gap-2">
-                    <FiEye className="text-gray-500 cursor-pointer" />
+                    <button
+                      onClick={() =>
+                        navigate(`/teachers/${s.ID}`, { state: s })
+                      }
+                      className="text-blue-600 hover:text-blue-800"
+                    >
+                      <FiEye />
+                    </button>
+
                     <FiEdit className="text-green-600 cursor-pointer" />
                     <FiTrash2
                       className="text-red-500 cursor-pointer inline"
@@ -453,7 +472,7 @@ const Students = () => {
               <span className="font-semibold text-red-600">
                 {deleteTarget === null
                   ? `${selected.length} selected student(s)`
-                  : "this student"}
+                  : "this teachers"}
               </span>
               ? This action cannot be undone.
             </p>

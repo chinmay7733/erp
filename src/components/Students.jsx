@@ -12,8 +12,13 @@ import {
   FiX,
 } from "react-icons/fi";
 import { MdOutlineSchool } from "react-icons/md";
+import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Students = () => {
+  const { roll } = useParams();
+  const navigate = useNavigate();
+
   const [students, setStudents] = useState([
     {
       roll: 2901,
@@ -226,7 +231,6 @@ const Students = () => {
   ]);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [deleteTarget, setDeleteTarget] = useState(null);
-  // null = bulk delete, number = single roll
 
   const [search, setSearch] = useState("");
   const [selected, setSelected] = useState([]);
@@ -260,11 +264,9 @@ const Students = () => {
   };
   const confirmDelete = () => {
     if (deleteTarget === null) {
-      // bulk delete
       setStudents((prev) => prev.filter((s) => !selected.includes(s.roll)));
       setSelected([]);
     } else {
-      // single delete
       setStudents((prev) => prev.filter((s) => s.roll !== deleteTarget));
     }
 
@@ -403,13 +405,17 @@ const Students = () => {
                     onChange={() => handleSelectOne(s.roll)}
                   />
                 </td>
+
                 <td className="p-1">{s.roll}</td>
+
                 <td className="p-1">
                   <img
                     src={s.avatar}
                     className="w-7 h-7 rounded-full mx-auto"
+                    alt="avatar"
                   />
                 </td>
+
                 <td className="p-1">{s.name}</td>
                 <td className="p-1 text-left">{s.gender}</td>
                 <td className="p-1 text-left">{s.parent}</td>
@@ -419,12 +425,29 @@ const Students = () => {
                 <td className="p-1 text-center">{s.dob}</td>
                 <td className="p-1 text-center">{s.mobile}</td>
                 <td className="p-1">{s.email}</td>
+
                 <td className="p-1">
                   <div className="flex justify-center gap-2">
-                    <FiEye className="text-gray-500 cursor-pointer" />
-                    <FiEdit className="text-green-600 cursor-pointer" />
+                    {/* VIEW */}
+                    <button
+                      onClick={() =>
+                        navigate(`/students/${s.roll}`, { state: s })
+                      }
+                      className="text-blue-600 hover:text-blue-800"
+                    >
+                      <FiEye />
+                    </button>
+
+                    {/* EDIT */}
+                    <FiEdit
+                      className="text-green-600 cursor-pointer"
+                      title="Edit"
+                    />
+
+                    {/* DELETE */}
                     <FiTrash2
-                      className="text-red-500 cursor-pointer inline"
+                      className="text-red-500 cursor-pointer"
+                      title="Delete"
                       onClick={() => {
                         setDeleteTarget(s.roll);
                         setShowDeleteModal(true);

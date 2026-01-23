@@ -10,16 +10,18 @@ import {
   FiMail,
   FiMapPin,
   FiChevronDown,
+  FiUserCheck,
   FiGrid,
 } from "react-icons/fi";
 import { FaSchool } from "react-icons/fa";
 import cap from "../assets/cap.png";
 
 const Sidebar = () => {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
   const [collapse, setCollapse] = useState(false);
 
-  const [studentsOpen, setStudentsOpen] = useState(true);
+  const [studentsOpen, setStudentsOpen] = useState(false);
+  const [teachersOpen, setTeachersOpen] = useState(false);
   const [accountOpen, setAccountOpen] = useState(false);
 
   const location = useLocation();
@@ -42,7 +44,6 @@ const Sidebar = () => {
         </button>
       </div>
 
-      {/* 🔹 SIDEBAR */}
       <aside
         className={`fixed top-0 left-0 h-screen
         ${collapse ? "w-16" : "w-64"}
@@ -52,7 +53,6 @@ const Sidebar = () => {
         md:translate-x-0
         flex flex-col`}
       >
-        {/* 🔸 HEADER */}
         <div className="h-14 bg-[#FFC107] flex items-center justify-between px-3 shrink-0">
           <div className="flex items-center gap-2">
             <img src={cap} className="w-6 h-6" />
@@ -64,26 +64,18 @@ const Sidebar = () => {
           </div>
           <button
             onClick={() =>
-              window.innerWidth < 768
-                ? setOpen(false)
-                : setCollapse(!collapse)
+              window.innerWidth < 768 ? setOpen(false) : setCollapse(!collapse)
             }
             className="text-white text-xl"
           >
             <FiMenu />
           </button>
         </div>
-
-        {/* 🔹 SCROLLABLE MENU */}
         <nav className="flex-1 overflow-y-auto scrollbar-akkhor">
-
-          {/* Dashboard */}
           <NavLink to="/" className={({ isActive }) => linkClass(isActive)}>
             <FiHome />
             {!collapse && "Dashboard"}
           </NavLink>
-
-          {/* ================= STUDENTS ================= */}
           <button
             onClick={() => setStudentsOpen(!studentsOpen)}
             className="flex items-center justify-between w-full px-4 py-3 hover:bg-white/10"
@@ -105,9 +97,8 @@ const Sidebar = () => {
             <div className="ml-10 text-xs">
               {[
                 ["All Students", "/students"],
-                ["Student Details", "/students/details"],
                 ["Admit Form", "/AddStudent"],
-                ["Student Promotion", "/students/promotion"],
+               
               ].map(([label, path]) => (
                 <NavLink
                   key={path}
@@ -122,9 +113,45 @@ const Sidebar = () => {
             </div>
           )}
 
-          {/* ================= OTHER MENUS ================= */}
+          <button
+            onClick={() => setTeachersOpen(!teachersOpen)}
+            className="flex items-center justify-between w-full px-4 py-3 hover:bg-white/10"
+          >
+            <div className="flex items-center gap-3">
+              <FiUserCheck />
+              {!collapse && "Teachers"}
+            </div>
+            {!collapse && (
+              <FiChevronDown
+                className={`transition-transform ${
+                  teachersOpen ? "rotate-180" : ""
+                }`}
+              />
+            )}
+          </button>
+
+          {teachersOpen && !collapse && (
+            <div className="ml-10 text-xs">
+              {[
+                ["All Teachers", "/teachers"],
+                ["Add Teacher", "/teachers/add"],
+                
+              ].map(([label, path]) => (
+                <NavLink
+                  key={path}
+                  to={path}
+                  className={`block py-2 hover:text-yellow-400 ${
+                    location.pathname === path ? "text-yellow-400" : ""
+                  }`}
+                >
+                  {label}
+                </NavLink>
+              ))}
+            </div>
+          )}
+
           {[
-            ["Teachers", "/teachers", <FiUser />],
+            // ["Teachers", "/teachers", <FiUser />],
             ["Parents", "/parents", <FiUsers />],
             ["Library", "/library", <FiBook />],
             ["Class", "/class", <FaSchool />],
@@ -149,7 +176,6 @@ const Sidebar = () => {
             </NavLink>
           ))}
 
-          {/* ================= ACCOUNT ================= */}
           <button
             onClick={() => setAccountOpen(!accountOpen)}
             className="flex items-center justify-between w-full px-4 py-3 hover:bg-white/10"
@@ -188,8 +214,6 @@ const Sidebar = () => {
           )}
         </nav>
       </aside>
-
-      {/* 🔹 MOBILE OVERLAY */}
       {open && (
         <div
           onClick={() => setOpen(false)}
