@@ -22,6 +22,7 @@ const Sidebar = () => {
 
   const [studentsOpen, setStudentsOpen] = useState(false);
   const [teachersOpen, setTeachersOpen] = useState(false);
+
   const [accountOpen, setAccountOpen] = useState(false);
 
   const location = useLocation();
@@ -62,14 +63,14 @@ const Sidebar = () => {
               </span>
             )}
           </div>
-          <button
-            onClick={() =>
-              window.innerWidth < 768 ? setOpen(false) : setCollapse(!collapse)
-            }
+          {/* <button
+            // onClick={() =>
+            //   window.innerWidth < 768 ? setOpen(false) : setCollapse(!collapse)
+            // }
             className="text-white text-xl"
           >
             <FiMenu />
-          </button>
+          </button> */}
         </div>
         <nav className="flex-1 overflow-y-auto scrollbar-akkhor">
           <NavLink to="/" className={({ isActive }) => linkClass(isActive)}>
@@ -78,7 +79,7 @@ const Sidebar = () => {
           </NavLink>
           <button
             onClick={() => setStudentsOpen(!studentsOpen)}
-            className="flex items-center justify-between w-full px-4 py-3 hover:bg-white/10"
+            className="flex items-center justify-between w-full px-2 py-1 hover:bg-white/10"
           >
             <div className="flex items-center gap-3">
               <FiUsers />
@@ -98,7 +99,6 @@ const Sidebar = () => {
               {[
                 ["All Students", "/students"],
                 ["Admit Form", "/AddStudent"],
-               
               ].map(([label, path]) => (
                 <NavLink
                   key={path}
@@ -115,7 +115,7 @@ const Sidebar = () => {
 
           <button
             onClick={() => setTeachersOpen(!teachersOpen)}
-            className="flex items-center justify-between w-full px-4 py-3 hover:bg-white/10"
+            className="flex items-center justify-between w-full px-2 py-1 hover:bg-white/10"
           >
             <div className="flex items-center gap-3">
               <FiUserCheck />
@@ -135,7 +135,6 @@ const Sidebar = () => {
               {[
                 ["All Teachers", "/teachers"],
                 ["Add Teacher", "/teachers/add"],
-                
               ].map(([label, path]) => (
                 <NavLink
                   key={path}
@@ -151,8 +150,7 @@ const Sidebar = () => {
           )}
 
           {[
-            // ["Teachers", "/teachers", <FiUser />],
-            ["Parents", "/parents", <FiUsers />],
+            ["Parents","/parents",<FiUsers/>],
             ["Library", "/library", <FiBook />],
             ["Class", "/class", <FaSchool />],
             ["Subject", "/subject", <FiBook />],
@@ -178,7 +176,7 @@ const Sidebar = () => {
 
           <button
             onClick={() => setAccountOpen(!accountOpen)}
-            className="flex items-center justify-between w-full px-4 py-3 hover:bg-white/10"
+            className="flex items-center justify-between w-full px-2 py-1 hover:bg-white/10"
           >
             <div className="flex items-center gap-3">
               <FiUser />

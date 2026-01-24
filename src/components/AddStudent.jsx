@@ -190,7 +190,7 @@ const AddStudent = () => {
 
                 <div>
                   <label className="label">
-                    Upload Parents Photo{" "}
+                    Upload Student Photo{" "}
                     <span className="text-xs">(150px × 150px)</span>
                   </label>
 
