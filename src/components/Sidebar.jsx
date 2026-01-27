@@ -156,6 +156,23 @@ const Sidebar = () => {
               ["Issue Book", "/library/issue"],
               ["Return Book", "/library/return"],
             ]}
+
+          </Dropdown>
+          <Dropdown
+            icon={FiUser}
+            label="Account"
+            open={accountOpen}
+            setOpen={setAccountOpen}
+            collapse={collapse}
+            bottom
+          >
+            {[
+              ["Fee Collection", "/account/feecollection"],
+              ["Create Student Payment", "/account/studentpayment"],
+              ["All Expenses", "/allexpenses"],
+               ["Add Expenses", "/addexpenses"],
+              
+            ]}
           </Dropdown>
 
           {/* OTHER LINKS */}
@@ -170,7 +187,7 @@ const Sidebar = () => {
             </NavLink>
           ))}
 
-          {/* ACCOUNT */}
+          {/* ACCOUNT
           <Dropdown
             icon={FiUser}
             label="Account"
@@ -180,11 +197,13 @@ const Sidebar = () => {
             bottom
           >
             {[
-              ["Profile", "/account/profile"],
-              ["Settings", "/account/settings"],
-              ["Logout", "/logout"],
+              ["Fee Collection", "/account/feecollection"],
+              ["Create Student Payment", "/account/studentpayment"],
+              ["AllExpenses", "/allexpenses"],
+               ["AddExpenses", "/addexpenses"],
+              
             ]}
-          </Dropdown>
+          </Dropdown> */}
         </nav>
       </aside>
 

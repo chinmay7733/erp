@@ -130,7 +130,9 @@ const LibraryList = () => {
           </div>
         </div>
       </div>
-
+<div className="text-2xl font-semibold text-gray-700">
+  Library List
+  </div>
       {/* 🔹 TABLE CARD */}
       <div className="bg-white rounded shadow mt-4">
         {/* HEADER */}
