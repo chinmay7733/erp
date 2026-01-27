@@ -11,6 +11,7 @@ import StudentsDetail from './components/StudentsDetail.jsx';
 import TeacherDetail from "./components/TeachersDetail.jsx";
 import AddTeacher from './components/AddTeacher.jsx';
 import Parents from './components/Parents.jsx'
+import LibraryList from './components/LibraryList.jsx'
 function App() {
   const [count, setCount] = useState(0)
 const Page = ({ title }) => (
@@ -32,7 +33,8 @@ const Page = ({ title }) => (
           <Route path="/teachers" element={<Teachers />} />
            <Route path="/teachers/add" element={<AddTeacher />} />
           <Route path="/parents" element={<Parents />} />
-          <Route path="/library" element={<Page title="Library" />} />
+          
+          <Route path="/library" element={<LibraryList />} />
           <Route path="/class" element={<Page title="Class" />} />
           <Route path="/subject" element={<Page title="Subject" />} />
           <Route path="/routine" element={<Page title="Class Routine" />} />

@@ -12,6 +12,7 @@ import {
   FiChevronDown,
   FiUserCheck,
   FiGrid,
+  FiBookOpen,
 } from "react-icons/fi";
 import { FaSchool } from "react-icons/fa";
 import cap from "../assets/cap.png";
@@ -22,22 +23,38 @@ const Sidebar = () => {
 
   const [studentsOpen, setStudentsOpen] = useState(false);
   const [teachersOpen, setTeachersOpen] = useState(false);
-
+  const [parentsOpen, setParentsOpen] = useState(false);
+  const [libraryOpen, setLibraryOpen] = useState(false);
   const [accountOpen, setAccountOpen] = useState(false);
 
   const location = useLocation();
 
   const linkClass = (active) =>
-    `flex items-center gap-3 px-2 py-2 text-sm transition
+    `flex items-center gap-3 px-3 py-2 text-sm transition
      hover:bg-white/10
      ${active ? "bg-white/20 border-l-4 border-yellow-400" : ""}`;
 
+  // SAFE MENU ITEMS
+  const menuItems = [
+    { label: "Class", path: "/class", icon: FaSchool },
+    { label: "Subject", path: "/subject", icon: FiBook },
+    { label: "Class Routine", path: "/routine", icon: FiBell },
+    { label: "Attendance", path: "/attendance", icon: FiUsers },
+    { label: "Exam", path: "/exam", icon: FiBook },
+    { label: "Transport", path: "/transport", icon: FiMapPin },
+    { label: "Hostel", path: "/hostel", icon: FiHome },
+    { label: "Notice", path: "/notice", icon: FiBell },
+    { label: "Message", path: "/message", icon: FiMail },
+    { label: "UI Elements", path: "/ui-elements", icon: FiGrid },
+    { label: "Map", path: "/map", icon: FiMapPin },
+  ];
+
   return (
     <>
-      {/* 🔹 MOBILE TOP BAR */}
+      {/* MOBILE TOP BAR */}
       <div className="md:hidden fixed top-0 left-0 w-full h-14 bg-[#FFC107] flex items-center justify-between px-4 z-50">
         <div className="flex items-center gap-2">
-          <img src={cap} className="w-6 h-6" />
+          <img src={cap} className="w-6 h-6" alt="logo" />
           <span className="font-bold text-white">Akkhor</span>
         </div>
         <button onClick={() => setOpen(true)} className="text-white text-2xl">
@@ -45,178 +62,186 @@ const Sidebar = () => {
         </button>
       </div>
 
+      {/* SIDEBAR */}
       <aside
         className={`fixed top-0 left-0 h-screen
         ${collapse ? "w-16" : "w-64"}
         bg-gradient-to-b from-[#0f2a44] to-[#0a1f33]
         text-white z-40 transition-all duration-300
         ${open ? "translate-x-0" : "-translate-x-full"}
-        md:translate-x-0
-        flex flex-col`}
+        md:translate-x-0 flex flex-col`}
       >
-        <div className="h-14 bg-[#FFC107] flex items-center justify-between px-3 shrink-0">
+        {/* LOGO */}
+        <div className="h-14 bg-[#FFC107] flex items-center justify-between px-3">
           <div className="flex items-center gap-2">
-            <img src={cap} className="w-6 h-6" />
+            <img src={cap} className="w-6 h-6" alt="logo" />
             {!collapse && (
               <span className="font-bold text-white">
                 Akkhor <sup className="text-xs">TM</sup>
               </span>
             )}
           </div>
-          {/* <button
-            // onClick={() =>
-            //   window.innerWidth < 768 ? setOpen(false) : setCollapse(!collapse)
-            // }
+          <button
+            onClick={() =>
+              window.innerWidth < 768
+                ? setOpen(false)
+                : setCollapse(!collapse)
+            }
             className="text-white text-xl"
           >
             <FiMenu />
-          </button> */}
+          </button>
         </div>
-        <nav className="flex-1 overflow-y-auto scrollbar-akkhor">
+
+        {/* NAV */}
+        <nav className="flex-1 overflow-y-auto pt-2">
+          {/* DASHBOARD */}
           <NavLink to="/" className={({ isActive }) => linkClass(isActive)}>
             <FiHome />
             {!collapse && "Dashboard"}
           </NavLink>
-          <button
-            onClick={() => setStudentsOpen(!studentsOpen)}
-            className="flex items-center justify-between w-full px-2 py-1 hover:bg-white/10"
+
+          {/* STUDENTS */}
+          <Dropdown
+            icon={FiUsers}
+            label="Students"
+            open={studentsOpen}
+            setOpen={setStudentsOpen}
+            collapse={collapse}
           >
-            <div className="flex items-center gap-3">
-              <FiUsers />
-              {!collapse && "Students"}
-            </div>
-            {!collapse && (
-              <FiChevronDown
-                className={`transition-transform ${
-                  studentsOpen ? "rotate-180" : ""
-                }`}
-              />
-            )}
-          </button>
+            {[
+              ["All Students", "/students"],
+              ["Admit Form", "/AddStudent"],
+            ]}
+          </Dropdown>
 
-          {studentsOpen && !collapse && (
-            <div className="ml-10 text-xs">
-              {[
-                ["All Students", "/students"],
-                ["Admit Form", "/AddStudent"],
-              ].map(([label, path]) => (
-                <NavLink
-                  key={path}
-                  to={path}
-                  className={`block py-2 hover:text-yellow-400 ${
-                    location.pathname === path ? "text-yellow-400" : ""
-                  }`}
-                >
-                  {label}
-                </NavLink>
-              ))}
-            </div>
-          )}
-
-          <button
-            onClick={() => setTeachersOpen(!teachersOpen)}
-            className="flex items-center justify-between w-full px-2 py-1 hover:bg-white/10"
+          {/* TEACHERS */}
+          <Dropdown
+            icon={FiUserCheck}
+            label="Teachers"
+            open={teachersOpen}
+            setOpen={setTeachersOpen}
+            collapse={collapse}
           >
-            <div className="flex items-center gap-3">
-              <FiUserCheck />
-              {!collapse && "Teachers"}
-            </div>
-            {!collapse && (
-              <FiChevronDown
-                className={`transition-transform ${
-                  teachersOpen ? "rotate-180" : ""
-                }`}
-              />
-            )}
-          </button>
+            {[
+              ["All Teachers", "/teachers"],
+              ["Add Teacher", "/teachers/add"],
+            ]}
+          </Dropdown>
 
-          {teachersOpen && !collapse && (
-            <div className="ml-10 text-xs">
-              {[
-                ["All Teachers", "/teachers"],
-                ["Add Teacher", "/teachers/add"],
-              ].map(([label, path]) => (
-                <NavLink
-                  key={path}
-                  to={path}
-                  className={`block py-2 hover:text-yellow-400 ${
-                    location.pathname === path ? "text-yellow-400" : ""
-                  }`}
-                >
-                  {label}
-                </NavLink>
-              ))}
-            </div>
-          )}
+          {/* PARENTS */}
+          <Dropdown
+            icon={FiUserCheck}
+            label="Parents"
+            open={parentsOpen}
+            setOpen={setParentsOpen}
+            collapse={collapse}
+          >
+            {[
+              ["All Parents", "/parents"],
+              ["Add Parents", "/parents/add"],
+            ]}
+          </Dropdown>
 
-          {[
-            ["Parents","/parents",<FiUsers/>],
-            ["Library", "/library", <FiBook />],
-            ["Class", "/class", <FaSchool />],
-            ["Subject", "/subject", <FiBook />],
-            ["Class Routine", "/routine", <FiBell />],
-            ["Attendance", "/attendance", <FiUsers />],
-            ["Exam", "/exam", <FiBook />],
-            ["Transport", "/transport", <FiMapPin />],
-            ["Hostel", "/hostel", <FiHome />],
-            ["Notice", "/notice", <FiBell />],
-            ["Message", "/message", <FiMail />],
-            ["UI Elements", "/ui-elements", <FiGrid />],
-            ["Map", "/map", <FiMapPin />],
-          ].map(([label, path, icon]) => (
+          {/* 📚 LIBRARY */}
+          <Dropdown
+            icon={FiBookOpen}
+            label="Library"
+            open={libraryOpen}
+            setOpen={setLibraryOpen}
+            collapse={collapse}
+          >
+            {[
+              ["All Books", "/library"],
+              ["Issue Book", "/library/issue"],
+              ["Return Book", "/library/return"],
+            ]}
+          </Dropdown>
+
+          {/* OTHER LINKS */}
+          {menuItems.map(({ label, path, icon: Icon }) => (
             <NavLink
               key={path}
               to={path}
               className={({ isActive }) => linkClass(isActive)}
             >
-              {icon}
-              {!collapse && label}
+              <Icon className="text-lg" />
+              {!collapse && <span>{label}</span>}
             </NavLink>
           ))}
 
-          <button
-            onClick={() => setAccountOpen(!accountOpen)}
-            className="flex items-center justify-between w-full px-2 py-1 hover:bg-white/10"
+          {/* ACCOUNT */}
+          <Dropdown
+            icon={FiUser}
+            label="Account"
+            open={accountOpen}
+            setOpen={setAccountOpen}
+            collapse={collapse}
+            bottom
           >
-            <div className="flex items-center gap-3">
-              <FiUser />
-              {!collapse && "Account"}
-            </div>
-            {!collapse && (
-              <FiChevronDown
-                className={`transition-transform ${
-                  accountOpen ? "rotate-180" : ""
-                }`}
-              />
-            )}
-          </button>
-
-          {accountOpen && !collapse && (
-            <div className="ml-10 text-xs mb-4">
-              {[
-                ["Profile", "/account/profile"],
-                ["Settings", "/account/settings"],
-                ["Logout", "/logout"],
-              ].map(([label, path]) => (
-                <NavLink
-                  key={path}
-                  to={path}
-                  className={`block py-2 hover:text-yellow-400 ${
-                    location.pathname === path ? "text-yellow-400" : ""
-                  }`}
-                >
-                  {label}
-                </NavLink>
-              ))}
-            </div>
-          )}
+            {[
+              ["Profile", "/account/profile"],
+              ["Settings", "/account/settings"],
+              ["Logout", "/logout"],
+            ]}
+          </Dropdown>
         </nav>
       </aside>
+
+      {/* MOBILE OVERLAY */}
       {open && (
         <div
           onClick={() => setOpen(false)}
           className="fixed inset-0 bg-black/40 z-30 md:hidden"
         />
+      )}
+    </>
+  );
+};
+
+/* 🔹 REUSABLE DROPDOWN COMPONENT */
+const Dropdown = ({
+  icon: Icon,
+  label,
+  open,
+  setOpen,
+  collapse,
+  children,
+  bottom,
+}) => {
+  const location = useLocation();
+
+  return (
+    <>
+      <button
+        onClick={() => setOpen(!open)}
+        className="flex items-center justify-between w-full px-3 py-2 hover:bg-white/10"
+      >
+        <div className="flex items-center gap-3">
+          <Icon />
+          {!collapse && label}
+        </div>
+        {!collapse && (
+          <FiChevronDown
+            className={`transition-transform ${open ? "rotate-180" : ""}`}
+          />
+        )}
+      </button>
+
+      {open && !collapse && (
+        <div className={`ml-10 text-xs ${bottom ? "mb-4" : ""}`}>
+          {children.map(([label, path]) => (
+            <NavLink
+              key={path}
+              to={path}
+              className={`block py-2 hover:text-yellow-400 ${
+                location.pathname === path ? "text-yellow-400" : ""
+              }`}
+            >
+              {label}
+            </NavLink>
+          ))}
+        </div>
       )}
     </>
   );
