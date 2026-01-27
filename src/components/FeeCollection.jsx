@@ -11,8 +11,11 @@ import {
   FiDelete,
 } from "react-icons/fi";
 import { MdOutlineSchool } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 
 const FeeCollection = () => {
+  const navigate = useNavigate();
+
   /* ================= DATA ================= */
   const initialStudents = [
     {
@@ -482,7 +485,22 @@ const FeeCollection = () => {
                 <td>{s.date}</td>
                 <td>
                   <div className="flex justify-center gap-2">
-                    <FiEye className="text-blue-500 cursor-pointer" />
+                    <FiEye
+                      className="text-blue-500 cursor-pointer"
+                      title="Pay Fees"
+                      onClick={() =>
+                        navigate("/payment", {
+                          state: {
+                            name: s.name,
+                            id: s.id,
+                            class: s.class,
+                            section: s.section,
+                            fee: s.fees,
+                          },
+                        })
+                      }
+                    />
+
                     <FiEdit className="text-green-600 cursor-pointer" />
                     <FiTrash2
                       className="text-red-600 cursor-pointer"

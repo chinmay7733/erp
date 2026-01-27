@@ -14,6 +14,7 @@ import Parents from './components/Parents.jsx';
 import LibraryList from './components/LibraryList.jsx';
 import FeeCollection from './components/FeeCollection.jsx';
 import IssueBooks from './components/IssueBooks.jsx';
+import StudentPayment from './components/StudentPayment.jsx'
 function App() {
   const [count, setCount] = useState(0)
 const Page = ({ title }) => (
@@ -38,6 +39,7 @@ const Page = ({ title }) => (
           <Route  path="/library/issue" element={<IssueBooks/>}/>
           <Route path="/library" element={<LibraryList />} />
           <Route path="/account/feecollection" element={<FeeCollection/>}/>
+          <Route path="/account/studentpayment" element={<StudentPayment/>}/>
           <Route path="/class" element={<Page title="Class" />} />
           <Route path="/subject" element={<Page title="Subject" />} />
           <Route path="/routine" element={<Page title="Class Routine" />} />

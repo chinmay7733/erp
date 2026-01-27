@@ -15,7 +15,7 @@ import { MdOutlineSchool } from "react-icons/md";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
-const Students = () => {
+const Teachers = () => {
   
   const [students, setStudents] = useState([
     {
@@ -502,4 +502,4 @@ const TeacherDetail = () => {
   );
 };
 
-export default Students;
+export default Teachers;
