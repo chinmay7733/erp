@@ -67,7 +67,10 @@ const ExpensesList = () => {
   };
 
   return (
-    <div className="bg-white border overflow-x-auto">
+   <div className="w-full   bg-white rounded-md shadow  p-4 px-1 sm:p-6">
+      <h2 className="font-semibold text-gray-700 border-b py-8  pb-3 mb-6">
+      All Expenses
+      </h2>
       <table className="w-full text-sm border-collapse">
         <thead>
           <tr className="border-b">

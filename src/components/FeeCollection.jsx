@@ -349,44 +349,10 @@ const FeeCollection = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 p-2">
-      {/* ================= HEADER ================= */}
-      <div className="bg-white rounded-md shadow-sm p-2 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
-        <div className="flex items-center gap-2 text-gray-700">
-          <MdOutlineSchool className="text-xl text-yellow-500" />
-          <span className="font-semibold">
-            Welcome To Akkhor
-            <span className="text-gray-400 font-normal">
-              {" "}
-              School Management System
-            </span>
-          </span>
-        </div>
-
-        <div className="flex items-center gap-4 text-sm text-gray-600">
-          <div className="flex items-center gap-1 bg-gray-100 rounded-full px-3 py-1">
-            <FiGlobe />
-            <select className="bg-transparent outline-none">
-              <option>English</option>
-              <option>Hindi</option>
-            </select>
-          </div>
-
-          <div className="relative bg-gray-100 rounded-full p-2">
-            <FiMail />
-            <span className="absolute -top-1 -right-1 bg-blue-500 text-white text-xs w-4 h-4 flex items-center justify-center rounded-full">
-              5
-            </span>
-          </div>
-
-          <div className="relative bg-gray-100 rounded-full p-2">
-            <FiBell />
-            <span className="absolute -top-1 -right-1 bg-yellow-500 text-white text-xs w-4 h-4 flex items-center justify-center rounded-full">
-              9
-            </span>
-          </div>
-        </div>
-      </div>
+    <div className="w-full   bg-white rounded-md shadow  p-4 px-1 sm:p-6">
+      <h2 className="font-semibold text-gray-700 border-b py-8  pb-3 mb-6">
+      Fee Collection 
+      </h2>
 
       {/* ================= TITLE + SEARCH ================= */}
       <div className="flex justify-between items-center mt-6 mb-3">

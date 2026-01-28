@@ -83,56 +83,11 @@ const LibraryList = () => {
   };
 
   return (
-    <div className="w-full p-4 bg-gray-100 min-h-screen">
-      {/* 🔹 TOP BAR */}
-      <div className="bg-white rounded-md shadow-sm p-3 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
-        <div className="flex items-center gap-1 text-gray-700">
-          <MdOutlineSchool className="text-xl text-yellow-500" />
-          <span className="font-semibold">
-            Welcome To Akkhor
-            <span className="text-gray-400 font-normal">
-              {" "}
-              School Management System
-            </span>
-          </span>
-        </div>
-
-        <div className="relative w-full lg:w-60">
-          <FiSearch className="absolute right-3 top-3 text-gray-400" />
-          <input
-            type="text"
-            placeholder="Search Here..."
-            className="w-full pl-5 pr-3 py-2 bg-gray-100 rounded-2xl focus:ring-2 focus:ring-yellow-400 outline-none"
-          />
-        </div>
-
-        <div className="flex items-center gap-5 text-sm text-gray-600">
-          <div className="flex items-center gap-1 bg-gray-100 rounded-full px-3 py-1">
-            <FiGlobe />
-            <select className="bg-transparent outline-none">
-              <option>English</option>
-              <option>Hindi</option>
-            </select>
-          </div>
-
-          <div className="relative bg-gray-100 rounded-full p-2">
-            <FiMail />
-            <span className="absolute -top-1 -right-1 bg-blue-500 text-white text-xs w-4 h-4 rounded-full flex items-center justify-center">
-              5
-            </span>
-          </div>
-
-          <div className="relative bg-gray-100 rounded-full p-2">
-            <FiBell />
-            <span className="absolute -top-1 -right-1 bg-yellow-500 text-white text-xs w-4 h-4 rounded-full flex items-center justify-center">
-              9
-            </span>
-          </div>
-        </div>
-      </div>
-<div className="text-2xl font-semibold text-gray-700">
-  Library List
-  </div>
+    <div className="w-full   bg-white rounded-md shadow  p-4 px-1 sm:p-6">
+      <h2 className="font-semibold text-gray-700 border-b py-8  pb-3 mb-6">
+     Library List
+      </h2>
+    
       {/* 🔹 TABLE CARD */}
       <div className="bg-white rounded shadow mt-4">
         {/* HEADER */}

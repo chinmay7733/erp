@@ -219,7 +219,7 @@ const Sidebar = ({ children }) => {
         </div>
 
         {/* ================= PAGE CONTENT ================= */}
-        <div className="pt-28 px-4">{children}</div>
+        <div className=" pt-2 px-0">{children}</div>
       </div>
     </div>
   );
