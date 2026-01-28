@@ -13,11 +13,14 @@ import {
   FiUserCheck,
   FiGrid,
   FiBookOpen,
+  FiSearch,
+  FiGlobe,
 } from "react-icons/fi";
 import { FaSchool } from "react-icons/fa";
+import { MdOutlineSchool } from "react-icons/md";
 import cap from "../assets/cap.png";
 
-const Sidebar = () => {
+const Sidebar = ({ children }) => {
   const [open, setOpen] = useState(true);
   const [collapse, setCollapse] = useState(false);
 
@@ -27,56 +30,28 @@ const Sidebar = () => {
   const [libraryOpen, setLibraryOpen] = useState(false);
   const [accountOpen, setAccountOpen] = useState(false);
 
-  const location = useLocation();
-
   const linkClass = (active) =>
     `flex items-center gap-3 px-3 py-2 text-sm transition
      hover:bg-white/10
      ${active ? "bg-white/20 border-l-4 border-yellow-400" : ""}`;
 
-  // SAFE MENU ITEMS
-  const menuItems = [
-    { label: "Class", path: "/class", icon: FaSchool },
-    { label: "Subject", path: "/subject", icon: FiBook },
-    { label: "Class Routine", path: "/routine", icon: FiBell },
-    { label: "Attendance", path: "/attendance", icon: FiUsers },
-    { label: "Exam", path: "/exam", icon: FiBook },
-    { label: "Transport", path: "/transport", icon: FiMapPin },
-    { label: "Hostel", path: "/hostel", icon: FiHome },
-    { label: "Notice", path: "/notice", icon: FiBell },
-    { label: "Message", path: "/message", icon: FiMail },
-    { label: "UI Elements", path: "/ui-elements", icon: FiGrid },
-    { label: "Map", path: "/map", icon: FiMapPin },
-  ];
-
   return (
-    <>
-      {/* MOBILE TOP BAR */}
-      <div className="md:hidden fixed top-0 left-0 w-full h-14 bg-[#FFC107] flex items-center justify-between px-4 z-50">
-        <div className="flex items-center gap-2">
-          <img src={cap} className="w-6 h-6" alt="logo" />
-          <span className="font-bold text-white">Akkhor</span>
-        </div>
-        <button onClick={() => setOpen(true)} className="text-white text-2xl">
-          <FiMenu />
-        </button>
-      </div>
-
-      {/* SIDEBAR */}
+    <div className="flex">
+      {/* ================= SIDEBAR ================= */}
       <aside
         className={`fixed top-0 left-0 h-screen
         ${collapse ? "w-16" : "w-64"}
         bg-gradient-to-b from-[#0f2a44] to-[#0a1f33]
         text-white z-40 transition-all duration-300
         ${open ? "translate-x-0" : "-translate-x-full"}
-        md:translate-x-0 flex flex-col`}
+        md:translate-x-0`}
       >
         {/* LOGO */}
         <div className="h-14 bg-[#FFC107] flex items-center justify-between px-3">
           <div className="flex items-center gap-2">
             <img src={cap} className="w-6 h-6" alt="logo" />
             {!collapse && (
-              <span className="font-bold text-white">
+              <span className="font-bold">
                 Akkhor <sup className="text-xs">TM</sup>
               </span>
             )}
@@ -87,7 +62,7 @@ const Sidebar = () => {
                 ? setOpen(false)
                 : setCollapse(!collapse)
             }
-            className="text-white text-xl"
+            className="text-xl"
           >
             <FiMenu />
           </button>
@@ -95,13 +70,11 @@ const Sidebar = () => {
 
         {/* NAV */}
         <nav className="flex-1 overflow-y-auto pt-2">
-          {/* DASHBOARD */}
           <NavLink to="/" className={({ isActive }) => linkClass(isActive)}>
             <FiHome />
             {!collapse && "Dashboard"}
           </NavLink>
 
-          {/* STUDENTS */}
           <Dropdown
             icon={FiUsers}
             label="Students"
@@ -115,7 +88,6 @@ const Sidebar = () => {
             ]}
           </Dropdown>
 
-          {/* TEACHERS */}
           <Dropdown
             icon={FiUserCheck}
             label="Teachers"
@@ -129,7 +101,6 @@ const Sidebar = () => {
             ]}
           </Dropdown>
 
-          {/* PARENTS */}
           <Dropdown
             icon={FiUserCheck}
             label="Parents"
@@ -143,7 +114,6 @@ const Sidebar = () => {
             ]}
           </Dropdown>
 
-          {/* 📚 LIBRARY */}
           <Dropdown
             icon={FiBookOpen}
             label="Library"
@@ -156,69 +126,106 @@ const Sidebar = () => {
               ["Issue Book", "/library/issue"],
               ["Return Book", "/library/return"],
             ]}
-
           </Dropdown>
+
           <Dropdown
             icon={FiUser}
             label="Account"
             open={accountOpen}
             setOpen={setAccountOpen}
             collapse={collapse}
-            bottom
           >
             {[
               ["Fee Collection", "/account/feecollection"],
-              ["Create Student Payment", "/account/studentpayment"],
+              ["Student Payment", "/account/studentpayment"],
               ["All Expenses", "/allexpenses"],
-               ["Add Expenses", "/addexpenses"],
-              
+              ["Add Expenses", "/addexpenses"],
             ]}
           </Dropdown>
-
-          {/* OTHER LINKS */}
-          {menuItems.map(({ label, path, icon: Icon }) => (
-            <NavLink
-              key={path}
-              to={path}
-              className={({ isActive }) => linkClass(isActive)}
-            >
-              <Icon className="text-lg" />
-              {!collapse && <span>{label}</span>}
-            </NavLink>
-          ))}
-
-          {/* ACCOUNT
-          <Dropdown
-            icon={FiUser}
-            label="Account"
-            open={accountOpen}
-            setOpen={setAccountOpen}
-            collapse={collapse}
-            bottom
-          >
-            {[
-              ["Fee Collection", "/account/feecollection"],
-              ["Create Student Payment", "/account/studentpayment"],
-              ["AllExpenses", "/allexpenses"],
-               ["AddExpenses", "/addexpenses"],
-              
-            ]}
-          </Dropdown> */}
         </nav>
       </aside>
 
-      {/* MOBILE OVERLAY */}
-      {open && (
+      {/* ================= MAIN AREA ================= */}
+      <div
+        className={`flex-1 min-h-screen bg-gray-100 transition-all duration-300
+        ${collapse ? "md:ml-16" : "md:ml-64"}`}
+      >
+        {/* ================= FIXED HEADER ================= */}
         <div
-          onClick={() => setOpen(false)}
-          className="fixed inset-0 bg-black/40 z-30 md:hidden"
-        />
-      )}
-    </>
+          className={`fixed top-0 right-0
+          ${collapse ? "md:left-16" : "md:left-64"}
+          left-0 z-30 bg-white shadow-sm p-3
+          flex flex-col lg:flex-row
+          lg:items-center lg:justify-between gap-4`}
+        >
+          {/* LEFT */}
+          <div className="flex items-center gap-2 text-gray-700">
+            <MdOutlineSchool className="text-xl text-yellow-500" />
+            <span className="font-semibold">
+              Welcome To Akkhor
+              <span className="text-gray-400 font-normal">
+                {" "}School Management System
+              </span>
+            </span>
+          </div>
+
+          {/* SEARCH */}
+          <div className="relative w-full lg:w-60">
+            <FiSearch className="absolute right-3 top-3 text-gray-400" />
+            <input
+              type="text"
+              placeholder="Search Here..."
+              className="w-full pl-4 pr-10 py-2 bg-gray-100 rounded-2xl
+              focus:outline-none focus:ring-2 focus:ring-yellow-400"
+            />
+          </div>
+
+          {/* RIGHT */}
+          <div className="flex items-center gap-5 text-sm text-gray-600">
+            <div className="flex items-center gap-1 bg-gray-100 rounded-full px-3 py-1">
+              <FiGlobe />
+              <select className="bg-transparent outline-none">
+                <option>English</option>
+                <option>Hindi</option>
+              </select>
+            </div>
+
+            <div className="relative bg-gray-100 rounded-full p-2">
+              <FiMail />
+              <span className="absolute -top-1 -right-1 bg-blue-500 text-white text-xs w-4 h-4 flex items-center justify-center rounded-full">
+                5
+              </span>
+            </div>
+
+            <div className="relative bg-gray-100 rounded-full p-2">
+              <FiBell />
+              <span className="absolute -top-1 -right-1 bg-yellow-500 text-white text-xs w-4 h-4 flex items-center justify-center rounded-full">
+                9
+              </span>
+            </div>
+
+            <div className="flex items-center gap-2">
+              <img
+                src="https://i.pravatar.cc/40"
+                className="w-8 h-8 rounded-full"
+                alt="profile"
+              />
+              <div className="hidden sm:block leading-tight">
+                <p className="font-semibold text-gray-700">Kazi Fahim</p>
+                <p className="text-xs text-gray-400">Admin</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* ================= PAGE CONTENT ================= */}
+        <div className="pt-28 px-4">{children}</div>
+      </div>
+    </div>
   );
 };
 
-/* 🔹 REUSABLE DROPDOWN COMPONENT */
+/* ================= DROPDOWN ================= */
 const Dropdown = ({
   icon: Icon,
   label,
@@ -226,7 +233,6 @@ const Dropdown = ({
   setOpen,
   collapse,
   children,
-  bottom,
 }) => {
   const location = useLocation();
 
@@ -248,7 +254,7 @@ const Dropdown = ({
       </button>
 
       {open && !collapse && (
-        <div className={`ml-10 text-xs ${bottom ? "mb-4" : ""}`}>
+        <div className="ml-10 text-xs">
           {children.map(([label, path]) => (
             <NavLink
               key={path}
